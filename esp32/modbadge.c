@@ -304,12 +304,6 @@ STATIC MP_DEFINE_CONST_FUN_OBJ_3(badge_eink_png_obj, badge_eink_png);
 
 STATIC mp_obj_t badge_eink_raw_frame(mp_obj_t obj_img, mp_obj_t obj_flags)
 {
-	int bufferSize = mp_obj_str_get_len(obj_img);
-	if (bufferSize != BADGE_EINK_WIDTH * BADGE_EINK_HEIGHT)
-	{
-		nlr_raise(mp_obj_new_exception_msg_varg(&mp_type_ValueError, "buffer size incorrect"));
-	}
-	
 	// convert the input buffer into a byte array
 	uint8_t* buffer = (uint8_t*)mp_obj_str_get_str(obj_img);
 	
